@@ -13,7 +13,9 @@ module Inspectify
           inspectify_auth_token = ::Inspectify.inspectify_auth_token
 
           @url = "https://#{inspectify_environment}.getinspectify.com/api/v1#{@path}"
-          @headers = @headers.merge{{ 'Authorization' => "Bearer #{inspectify_auth_token}" }}
+          @headers = @headers.merge({
+            'Authorization' => "Bearer #{inspectify_auth_token}",
+          })
           @data = @data || {}
 
           response = RestClient::Request.execute(
